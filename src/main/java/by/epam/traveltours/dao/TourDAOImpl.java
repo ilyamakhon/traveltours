@@ -5,7 +5,6 @@ import by.epam.traveltours.bean.TourCriteria;
 import by.epam.traveltours.storage.ToursStorage;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -24,6 +23,10 @@ public class TourDAOImpl implements TourDAO {
 
     @Override
     public List<Tour> findTours(TourCriteria criteria) {
+        if (criteria == null) {
+            return tours;
+        }
+
         List<Tour> foundTours = new ArrayList<>();
         for (Tour tour : tours) {
             if (matchesCriteria(tour, criteria)) {
@@ -31,7 +34,9 @@ public class TourDAOImpl implements TourDAO {
             }
         }
 
-        sortTours(foundTours, criteria);
+        if (!foundTours.isEmpty()) {
+            sortTours(foundTours, criteria);
+        }
 
         return foundTours;
     }
