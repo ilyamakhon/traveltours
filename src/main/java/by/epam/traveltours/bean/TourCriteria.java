@@ -145,4 +145,18 @@ public class TourCriteria {
     public int hashCode() {
         return Objects.hash(tourType, minPrice, maxPrice, transportType, typeOfFood, minAmountOfDays, maxAmountOfDays, sortField);
     }
+
+    @Override
+    public String toString() {
+        return "TourCriteria{" +
+                "tourType=" + tourType +
+                ", minPrice=" + minPrice +
+                ", maxPrice=" + maxPrice +
+                ", transportType=" + transportType +
+                ", typeOfFood=" + typeOfFood +
+                ", minAmountOfDays=" + minAmountOfDays +
+                ", maxAmountOfDays=" + maxAmountOfDays +
+                ", sortField=" + sortField +
+                '}';
+    }
 }

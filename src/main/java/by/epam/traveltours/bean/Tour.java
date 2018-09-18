@@ -133,4 +133,16 @@ public class Tour implements Serializable {
     public int hashCode() {
         return Objects.hash(tourId, tourType, price, transportType, typeOfFood, amountOfDays);
     }
+
+    @Override
+    public String toString() {
+        return "Tour{" +
+                "tourId=" + tourId +
+                ", tourType=" + tourType +
+                ", price=" + price +
+                ", transportType=" + transportType +
+                ", typeOfFood=" + typeOfFood +
+                ", amountOfDays=" + amountOfDays +
+                '}';
+    }
 }

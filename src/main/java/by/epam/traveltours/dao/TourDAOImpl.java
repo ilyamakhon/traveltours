@@ -104,26 +104,28 @@ public class TourDAOImpl implements TourDAO {
     private void sortTours(List<Tour> tourList, TourCriteria criteria) {
         TourCriteria.SortField sortField = criteria.getSortField();
         Comparator<Tour> comparator;
-        switch (sortField) {
-            case PRICE:
-                comparator = (tour1, tour2) -> {
-                    Float tour1Price = tour1.getPrice();
-                    Float tour2Price = tour2.getPrice();
-                    return tour1Price.compareTo(tour2Price);
-                };
-                break;
-            case AMOUNT_OF_DAYS:
-                comparator = (tour1, tour2) -> {
-                    Integer tour1AmountOfDays = tour1.getAmountOfDays();
-                    Integer tour2AmountOfDays = tour2.getAmountOfDays();
-                    return tour1AmountOfDays.compareTo(tour2AmountOfDays);
-                };
-                break;
-            default:
-                comparator = null;
-                break;
-        }
 
-        tourList.sort(comparator);
+        if (sortField != null) {
+            switch (sortField) {
+                case PRICE:
+                    comparator = (tour1, tour2) -> {
+                        Float tour1Price = tour1.getPrice();
+                        Float tour2Price = tour2.getPrice();
+                        return tour1Price.compareTo(tour2Price);
+                    };
+                    break;
+                case AMOUNT_OF_DAYS:
+                    comparator = (tour1, tour2) -> {
+                        Integer tour1AmountOfDays = tour1.getAmountOfDays();
+                        Integer tour2AmountOfDays = tour2.getAmountOfDays();
+                        return tour1AmountOfDays.compareTo(tour2AmountOfDays);
+                    };
+                    break;
+                default:
+                    comparator = null;
+                    break;
+            }
+            tourList.sort(comparator);
+        }
     }
 }

@@ -23,31 +23,35 @@ public class TourCriteriaValidatorImpl implements TourCriteriaValidator {
         List<ValidationError> validationErrors = new ArrayList<>();
 
         Float minTourPrice = tourCriteria.getMinPrice();
-        if (minTourPrice < 0.0F) {
+        if (minTourPrice != null && minTourPrice < 0.0F) {
             validationErrors.add(ValidationError.MIN_PRICE_LESS_THAN_ZERO);
         }
 
+
         Float maxTourPrice = tourCriteria.getMaxPrice();
-        if (maxTourPrice < 0.0F) {
+        if (maxTourPrice != null && maxTourPrice < 0.0F) {
             validationErrors.add(ValidationError.MAX_PRICE_LESS_THAN_ZERO);
         }
-
-        if (minTourPrice > maxTourPrice) {
-            validationErrors.add(ValidationError.MIN_PRICE_GREATER_THAN_MAX_PRICE);
+        if (minTourPrice != null && maxTourPrice != null) {
+            if (minTourPrice > maxTourPrice) {
+                validationErrors.add(ValidationError.MIN_PRICE_GREATER_THAN_MAX_PRICE);
+            }
         }
 
         Integer minAmountOfDays = tourCriteria.getMinAmountOfDays();
-        if (minAmountOfDays < 0) {
+        if (minAmountOfDays != null && minAmountOfDays < 0 ) {
             validationErrors.add(ValidationError.MIN_DAYS_LESS_THAN_ZERO);
         }
 
         Integer maxAmountOfDays = tourCriteria.getMaxAmountOfDays();
-        if (maxAmountOfDays < 0) {
+        if (maxAmountOfDays != null && maxAmountOfDays < 0) {
             validationErrors.add(ValidationError.MAX_PRICE_LESS_THAN_ZERO);
         }
 
-        if (minAmountOfDays > maxAmountOfDays) {
-            validationErrors.add(ValidationError.MIN_DAYS_GREATER_THAN_MAX_DAYS);
+        if (minAmountOfDays != null && maxAmountOfDays != null){
+            if (minAmountOfDays > maxAmountOfDays) {
+                validationErrors.add(ValidationError.MIN_DAYS_GREATER_THAN_MAX_DAYS);
+            }
         }
 
         if (!validationErrors.isEmpty()) {
