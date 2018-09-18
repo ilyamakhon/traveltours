@@ -1,7 +1,8 @@
-package by.makhon.travelvouchers.services;
+package by.epam.traveltours.services;
 
-import by.makhon.travelvouchers.bean.Tour;
-import by.makhon.travelvouchers.dao.TourDAO;
+import by.epam.traveltours.bean.Tour;
+import by.epam.traveltours.dao.TourDAO;
+
 import java.util.List;
 
 public class TourServiceImpl implements TourService {

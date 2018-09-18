@@ -1,9 +1,7 @@
-package by.makhon.travelvouchers;
+package by.epam.traveltours;
 
-import by.makhon.travelvouchers.bean.Tour;
-import by.makhon.travelvouchers.dao.TourDAOImpl;
-import by.makhon.travelvouchers.services.TourService;
-import by.makhon.travelvouchers.services.TourServiceImpl;
+import by.epam.traveltours.bean.Tour;
+import by.epam.traveltours.dao.TourDAOImpl;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,10 +1,10 @@
-package by.makhon.travelvouchers.dao;
+package by.epam.traveltours.services;
 
-import by.makhon.travelvouchers.bean.Tour;
+import by.epam.traveltours.bean.Tour;
 
 import java.util.List;
 
-public interface TourDAO {
+public interface TourService {
     void setUpTours();
     List<Tour> getAllTours();
     List<Tour> filterToursByType(Tour filterBy);
