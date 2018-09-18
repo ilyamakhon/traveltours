@@ -45,7 +45,7 @@ public class TourCriteriaValidatorImpl implements TourCriteriaValidator {
 
         Integer maxAmountOfDays = tourCriteria.getMaxAmountOfDays();
         if (maxAmountOfDays != null && maxAmountOfDays < 0) {
-            validationErrors.add(ValidationError.MAX_PRICE_LESS_THAN_ZERO);
+            validationErrors.add(ValidationError.MAX_DAYS_LESS_THAN_ZERO);
         }
 
         if (minAmountOfDays != null && maxAmountOfDays != null){

@@ -42,7 +42,7 @@ public class TourDAOImpl implements TourDAO {
     }
 
     private boolean matchesCriteria(Tour tour, TourCriteria criteria) {
-        List<Tour.TourType> criteriaTourType = criteria.getTourType();
+        List<Tour.TourType> criteriaTourType = criteria.getTourTypes();
         if (criteriaTourType != null && !criteriaTourType.isEmpty()) {
             Tour.TourType tourType = tour.getTourType();
             if (!criteriaTourType.contains(tourType)) {
@@ -66,7 +66,7 @@ public class TourDAOImpl implements TourDAO {
             }
         }
 
-        List<Tour.TransportType> criteriaTransportType = criteria.getTransportType();
+        List<Tour.TransportType> criteriaTransportType = criteria.getTransportTypes();
         if (criteriaTransportType != null && !criteriaTransportType.isEmpty()){
             Tour.TransportType transportType = tour.getTransportType();
             if (!criteriaTransportType.contains(transportType)) {
@@ -74,7 +74,7 @@ public class TourDAOImpl implements TourDAO {
             }
         }
 
-        List<Tour.TypeOfFood> criteriaFoodType = criteria.getTypeOfFood();
+        List<Tour.TypeOfFood> criteriaFoodType = criteria.getTypesOfFood();
         if (criteriaFoodType != null && !criteriaFoodType.isEmpty()){
             Tour.TypeOfFood typeOfFood = tour.getTypeOfFood();
             if (!criteriaFoodType.contains(typeOfFood)) {

@@ -9,21 +9,21 @@ public class TourCriteria {
         PRICE, AMOUNT_OF_DAYS
     }
 
-    private List<Tour.TourType> tourType;
+    private List<Tour.TourType> tourTypes;
     private Float minPrice;
     private Float maxPrice;
-    private List<Tour.TransportType> transportType;
-    private List<Tour.TypeOfFood> typeOfFood;
+    private List<Tour.TransportType> transportTypes;
+    private List<Tour.TypeOfFood> typesOfFood;
     private Integer minAmountOfDays;
     private Integer maxAmountOfDays;
     private SortField sortField;
 
-    public List<Tour.TourType> getTourType() {
-        return tourType;
+    public List<Tour.TourType> getTourTypes() {
+        return tourTypes;
     }
 
-    public void setTourType(List<Tour.TourType> tourType) {
-        this.tourType = tourType;
+    public void setTourTypes(List<Tour.TourType> tourTypes) {
+        this.tourTypes = tourTypes;
     }
 
     public Float getMinPrice() {
@@ -42,20 +42,20 @@ public class TourCriteria {
         this.maxPrice = maxPrice;
     }
 
-    public List<Tour.TransportType> getTransportType() {
-        return transportType;
+    public List<Tour.TransportType> getTransportTypes() {
+        return transportTypes;
     }
 
-    public void setTransportType(List<Tour.TransportType> transportType) {
-        this.transportType = transportType;
+    public void setTransportTypes(List<Tour.TransportType> transportTypes) {
+        this.transportTypes = transportTypes;
     }
 
-    public List<Tour.TypeOfFood> getTypeOfFood() {
-        return typeOfFood;
+    public List<Tour.TypeOfFood> getTypesOfFood() {
+        return typesOfFood;
     }
 
-    public void setTypeOfFood(List<Tour.TypeOfFood> typeOfFood) {
-        this.typeOfFood = typeOfFood;
+    public void setTypesOfFood(List<Tour.TypeOfFood> typesOfFood) {
+        this.typesOfFood = typesOfFood;
     }
 
     public Integer getMinAmountOfDays() {
@@ -90,7 +90,7 @@ public class TourCriteria {
         }
 
         public Builder withTourTypes(List<Tour.TourType> tourType) {
-            tourCriteria.tourType = tourType;
+            tourCriteria.tourTypes = tourType;
             return this;
         }
 
@@ -101,12 +101,12 @@ public class TourCriteria {
         }
 
         public Builder withTransportType(List<Tour.TransportType> transportType) {
-            tourCriteria.transportType = transportType;
+            tourCriteria.transportTypes = transportType;
             return this;
         }
 
         public Builder withTypeOfFood(List<Tour.TypeOfFood> typeOfFood) {
-            tourCriteria.typeOfFood = typeOfFood;
+            tourCriteria.typesOfFood = typeOfFood;
             return this;
         }
 
@@ -131,11 +131,11 @@ public class TourCriteria {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         TourCriteria that = (TourCriteria) o;
-        return Objects.equals(tourType, that.tourType) &&
+        return Objects.equals(tourTypes, that.tourTypes) &&
                 Objects.equals(minPrice, that.minPrice) &&
                 Objects.equals(maxPrice, that.maxPrice) &&
-                Objects.equals(transportType, that.transportType) &&
-                Objects.equals(typeOfFood, that.typeOfFood) &&
+                Objects.equals(transportTypes, that.transportTypes) &&
+                Objects.equals(typesOfFood, that.typesOfFood) &&
                 Objects.equals(minAmountOfDays, that.minAmountOfDays) &&
                 Objects.equals(maxAmountOfDays, that.maxAmountOfDays) &&
                 sortField == that.sortField;
@@ -143,17 +143,17 @@ public class TourCriteria {
 
     @Override
     public int hashCode() {
-        return Objects.hash(tourType, minPrice, maxPrice, transportType, typeOfFood, minAmountOfDays, maxAmountOfDays, sortField);
+        return Objects.hash(tourTypes, minPrice, maxPrice, transportTypes, typesOfFood, minAmountOfDays, maxAmountOfDays, sortField);
     }
 
     @Override
     public String toString() {
         return "TourCriteria{" +
-                "tourType=" + tourType +
+                "tourTypes=" + tourTypes +
                 ", minPrice=" + minPrice +
                 ", maxPrice=" + maxPrice +
-                ", transportType=" + transportType +
-                ", typeOfFood=" + typeOfFood +
+                ", transportTypes=" + transportTypes +
+                ", typesOfFood=" + typesOfFood +
                 ", minAmountOfDays=" + minAmountOfDays +
                 ", maxAmountOfDays=" + maxAmountOfDays +
                 ", sortField=" + sortField +

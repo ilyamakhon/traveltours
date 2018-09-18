@@ -10,7 +10,7 @@ import java.util.List;
 public class Main {
     private static TourService TOUR_SERVICE = TourService.getInstance();
     public static void main(String[] args) {
-        TourCriteria tourCriteria = TourCriteria.Builder.create().withTypeOfFood(Collections.singletonList(Tour.TypeOfFood.BREAKFAST)).build();
+        TourCriteria tourCriteria = TourCriteria.Builder.create().withTransportType(Collections.singletonList(Tour.TransportType.PLANE)).build();
         List<Tour> tours = TOUR_SERVICE.findTours(tourCriteria);
         for (Tour tour : tours) {
             System.out.println(tour.toString());
