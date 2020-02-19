@@ -7,12 +7,12 @@ import java.io.*;
 import java.util.Arrays;
 import java.util.List;
 
-public class JsonDAO extends TourDAO {
+public class JsonDAOExternal extends ExternalTourDAO {
 
     private static final String FILE_PATH = "src/main/resources/textfiles/tours.json";
-    private static final JsonDAO INSTANCE = new JsonDAO();
+    private static final JsonDAOExternal INSTANCE = new JsonDAOExternal();
 
-    public static JsonDAO getInstance() {
+    public static JsonDAOExternal getInstance() {
         return INSTANCE;
     }
 

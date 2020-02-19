@@ -1,7 +1,7 @@
 package by.epam.traveltours.validator;
 
 import by.epam.traveltours.bean.TourCriteria;
-import by.epam.traveltours.exception.ValidationException;
+import by.epam.traveltours.exception.TourValidationException;
 
 public interface TourCriteriaValidator {
 
@@ -9,5 +9,5 @@ public interface TourCriteriaValidator {
         return TourCriteriaValidatorImpl.getInstance();
     }
 
-    void validate(TourCriteria tourCriteria) throws ValidationException;
+    void validate(TourCriteria tourCriteria) throws TourValidationException;
 }

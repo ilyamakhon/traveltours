@@ -2,22 +2,23 @@ package by.epam.traveltours.dao.externaldao;
 
 import by.epam.traveltours.bean.Tour;
 import by.epam.traveltours.dao.daotype.DAOEnum;
+import by.epam.traveltours.exception.DaoNotFoundException;
 
 import java.util.List;
 
-public abstract class TourDAO {
+public abstract class ExternalTourDAO {
 
-    public static TourDAO getDAO(String daoType) {
+    public static ExternalTourDAO getDAO(String daoType) {
         if (DAOEnum.MYSQL_DAO.getType().equals(daoType)) {
-            return MySqlDAO.getInstance();
+            return MySqlDAOExternal.getInstance();
         }
         if (DAOEnum.JSON_DAO.getType().equals(daoType)) {
-            return JsonDAO.getInstance();
+            return JsonDAOExternal.getInstance();
         }
         if (DAOEnum.FILE_DAO.getType().equals(daoType)) {
-            return FileDAO.getInstance();
+            return FileDAOExternal.getInstance();
         }
-        return null;
+        throw new DaoNotFoundException("Data Access Object with type -> \""+ daoType +"\" not found!");
     }
 
     public abstract void readTours();

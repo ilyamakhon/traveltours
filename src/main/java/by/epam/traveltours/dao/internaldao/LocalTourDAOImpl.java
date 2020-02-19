@@ -93,9 +93,7 @@ public class LocalTourDAOImpl implements LocalTourDAO {
         Integer maxDays = criteria.getMaxAmountOfDays();
         if(maxDays != null) {
             int amountOfDays = tour.getAmountOfDays();
-            if (amountOfDays > maxDays) {
-                return false;
-            }
+            return amountOfDays <= maxDays;
         }
 
         return true;

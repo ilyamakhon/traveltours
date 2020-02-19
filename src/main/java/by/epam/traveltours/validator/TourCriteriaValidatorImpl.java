@@ -1,8 +1,7 @@
 package by.epam.traveltours.validator;
 
-import by.epam.traveltours.bean.Tour;
 import by.epam.traveltours.bean.TourCriteria;
-import by.epam.traveltours.exception.ValidationException;
+import by.epam.traveltours.exception.TourValidationException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,7 +54,7 @@ public class TourCriteriaValidatorImpl implements TourCriteriaValidator {
         }
 
         if (!validationErrors.isEmpty()) {
-            throw new ValidationException(validationErrors);
+            throw new TourValidationException(validationErrors);
         }
     }
 }

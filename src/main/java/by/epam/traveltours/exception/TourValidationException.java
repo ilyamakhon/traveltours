@@ -4,13 +4,11 @@ import by.epam.traveltours.validator.ValidationError;
 
 import java.util.List;
 
-public class ValidationException extends RuntimeException {
-
-    private static final long serialVersionUID = -366831447885873292L;
+public class TourValidationException extends RuntimeException {
 
     private List<ValidationError> validationErrors;
 
-    public ValidationException(List<ValidationError> validationErrors) {
+    public TourValidationException(List<ValidationError> validationErrors) {
         this.validationErrors = validationErrors;
     }
 }
