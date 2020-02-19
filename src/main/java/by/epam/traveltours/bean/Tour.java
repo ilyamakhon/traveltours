@@ -3,9 +3,7 @@ package by.epam.traveltours.bean;
 import java.io.Serializable;
 import java.util.Objects;
 
-public class Tour implements Serializable {
-
-    private static final long serialVersionUID = 1889581583218754321L;
+public class Tour {
 
     public enum TourType {
         REST, THERAPEUTIC, EXCURSION, SHOPPING, CRUISE

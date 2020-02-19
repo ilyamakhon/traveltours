@@ -1,14 +1,14 @@
-package by.epam.traveltours.dao;
+package by.epam.traveltours.dao.internaldao;
 
 import by.epam.traveltours.bean.Tour;
 import by.epam.traveltours.bean.TourCriteria;
 
 import java.util.List;
 
-public interface TourDAO {
+public interface LocalTourDAO {
 
-    static TourDAO getInstance() {
-        return TourDAOImpl.getInstance();
+    static LocalTourDAO getInstance() {
+        return LocalTourDAOImpl.getInstance();
     }
 
     List<Tour> findTours(TourCriteria criteria);

@@ -2,7 +2,7 @@ package by.epam.traveltours.services;
 
 import by.epam.traveltours.bean.Tour;
 import by.epam.traveltours.bean.TourCriteria;
-import by.epam.traveltours.dao.TourDAO;
+import by.epam.traveltours.dao.internaldao.LocalTourDAO;
 import by.epam.traveltours.validator.TourCriteriaValidator;
 
 import java.util.List;
@@ -15,7 +15,7 @@ public class TourServiceImpl implements TourService {
         return INSTANCE;
     }
 
-    private TourDAO tourDAO = TourDAO.getInstance();
+    private LocalTourDAO localTourDAO = LocalTourDAO.getInstance();
     private TourCriteriaValidator criteriaValidator = TourCriteriaValidator.getInstance();
 
     private TourServiceImpl() {
@@ -29,6 +29,6 @@ public class TourServiceImpl implements TourService {
 
         criteriaValidator.validate(tourCriteria);
 
-        return tourDAO.findTours(tourCriteria);
+        return localTourDAO.findTours(tourCriteria);
     }
 }

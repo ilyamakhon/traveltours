@@ -17,9 +17,9 @@ import static by.epam.traveltours.bean.Tour.TypeOfFood.BREAKFAST;
 import static by.epam.traveltours.bean.Tour.TypeOfFood.BREAKFAST_AND_DINNER;
 import static java.util.Arrays.asList;
 
-public class ToursStorage {
+public class TourStorage {
 
-    private static final ToursStorage INSTANCE = new ToursStorage();
+    private static final TourStorage INSTANCE = new TourStorage();
 
     private List<Tour> tourList = asList(
             buildTour(1L, REST,1150F, BUS, BREAKFAST,7),
@@ -39,11 +39,11 @@ public class ToursStorage {
             buildTour(15L, CRUISE,2700F, PLANE, ALL_INCLUSIVE, 14)
     );
 
-    public static ToursStorage getInstance() {
+    public static TourStorage getInstance() {
         return INSTANCE;
     }
 
-    private ToursStorage() {
+    private TourStorage() {
     }
 
     public List<Tour> getAllTours() {

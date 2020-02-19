@@ -1,24 +1,24 @@
-package by.epam.traveltours.dao;
+package by.epam.traveltours.dao.internaldao;
 
 import by.epam.traveltours.bean.Tour;
 import by.epam.traveltours.bean.TourCriteria;
-import by.epam.traveltours.storage.ToursStorage;
+import by.epam.traveltours.storage.TourStorage;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-public class TourDAOImpl implements TourDAO {
+public class LocalTourDAOImpl implements LocalTourDAO {
 
-    private static final TourDAOImpl INSTANCE = new TourDAOImpl();
+    private static final LocalTourDAOImpl INSTANCE = new LocalTourDAOImpl();
 
-    public static TourDAOImpl getInstance() {
+    public static LocalTourDAOImpl getInstance() {
         return INSTANCE;
     }
 
-    private List<Tour> tours = ToursStorage.getInstance().getAllTours();
+    private List<Tour> tours = TourStorage.getInstance().getAllTours();
 
-    private TourDAOImpl() {
+    private LocalTourDAOImpl() {
     }
 
     @Override
