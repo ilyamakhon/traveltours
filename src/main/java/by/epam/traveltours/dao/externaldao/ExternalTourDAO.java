@@ -18,7 +18,7 @@ public abstract class ExternalTourDAO {
         if (DAOEnum.FILE_DAO.getType().equals(daoType)) {
             return FileDAOExternal.getInstance();
         }
-        throw new DaoNotFoundException("Data Access Object with type -> \""+ daoType +"\" not found!");
+        throw new DaoNotFoundException("Data Access Object with type -> \""+ daoType +"\" not found!" + "\nPlease review application.properties file to find correct DAO types!");
     }
 
     public abstract void readTours();

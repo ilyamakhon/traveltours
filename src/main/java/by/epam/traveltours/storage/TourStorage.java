@@ -1,7 +1,9 @@
 package by.epam.traveltours.storage;
 
 import by.epam.traveltours.bean.Tour;
+import by.epam.traveltours.bean.TourCriteria;
 
+import java.util.Collections;
 import java.util.List;
 
 import static by.epam.traveltours.bean.Tour.TourType.CRUISE;
