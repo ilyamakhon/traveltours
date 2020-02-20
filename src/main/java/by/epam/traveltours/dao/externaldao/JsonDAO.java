@@ -1,6 +1,7 @@
 package by.epam.traveltours.dao.externaldao;
 
 import by.epam.traveltours.bean.Tour;
+import by.epam.traveltours.propertyloader.PropertyLoader;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.File;
@@ -12,7 +13,7 @@ import java.util.List;
 
 public class JsonDAO extends ExternalTourDAO {
 
-    private static final String FILE_PATH = "src/main/resources/textfiles/tours.json";
+    private static final String FILE_PATH = PropertyLoader.loadProperty("json.tours.path");
     private static final JsonDAO INSTANCE = new JsonDAO();
 
     public static JsonDAO getInstance() {
@@ -32,12 +33,20 @@ public class JsonDAO extends ExternalTourDAO {
     @Override
     public void saveTours(List<Tour> tours) {
         File file = new File(FILE_PATH);
-        file.getParentFile().mkdirs();
+        createFolder(file);
         ObjectMapper mapper = new ObjectMapper();
         try {
             mapper.writeValue(file, tours);
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    private void createFolder(File file) {
+        if (file.getParentFile().mkdirs()) {
+            System.out.println("Folder " + file.getParentFile() + " created");
+        } else {
+            System.out.println("Folder " + file.getParentFile() + " already exists");
         }
     }
 }

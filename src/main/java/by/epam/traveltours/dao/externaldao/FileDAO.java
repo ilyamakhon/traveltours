@@ -1,6 +1,7 @@
 package by.epam.traveltours.dao.externaldao;
 
 import by.epam.traveltours.bean.Tour;
+import by.epam.traveltours.propertyloader.PropertyLoader;
 
 import java.io.File;
 import java.io.FileReader;
@@ -11,7 +12,7 @@ import java.util.Scanner;
 
 public class FileDAO extends ExternalTourDAO {
 
-    private static final String FILE_PATH = "src/main/resources/textfiles/tours.txt";
+    private static final String FILE_PATH = PropertyLoader.loadProperty("file.tours.path");
     private static final FileDAO INSTANCE = new FileDAO();
 
     public static FileDAO getInstance() {
@@ -34,7 +35,7 @@ public class FileDAO extends ExternalTourDAO {
     public void saveTours(List<Tour> tours) {
         try  {
             File file = new File(FILE_PATH);
-            file.getParentFile().mkdirs();
+            createFolder(file);
             FileWriter writer = new FileWriter(file);
             for (Tour tour : tours) {
                 writer.write(tour.toString() + "\n");
@@ -42,6 +43,14 @@ public class FileDAO extends ExternalTourDAO {
             writer.flush();
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    private void createFolder(File file) {
+        if (file.getParentFile().mkdirs()) {
+            System.out.println("Folder " + file.getParentFile() + " created");
+        } else {
+            System.out.println("Folder " + file.getParentFile() + " already exists");
         }
     }
 }
