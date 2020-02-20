@@ -13,5 +13,5 @@ public interface TourService {
 
     List<Tour> findTours(TourCriteria tourCriteria);
 
-    TourCriteria getCriteriaByType(String criteriaType);
+    TourCriteria getCriteriaByTransportType(String criteriaType);
 }

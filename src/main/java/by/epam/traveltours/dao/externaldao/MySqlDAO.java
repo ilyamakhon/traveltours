@@ -6,16 +6,16 @@ import by.epam.traveltours.propertyloader.PropertyLoader;
 import java.sql.*;
 import java.util.List;
 
-public class MySqlDAOExternal extends ExternalTourDAO {
+public class MySqlDAO extends ExternalTourDAO {
 
     private static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
     private static final String DB_URL = PropertyLoader.loadProperty("db.url");
     private static final String DB_USERNAME = PropertyLoader.loadProperty("db.username");
     private static final String DB_PASSWORD = PropertyLoader.loadProperty("db.password");
 
-    private static final MySqlDAOExternal INSTANCE = new MySqlDAOExternal();
+    private static final MySqlDAO INSTANCE = new MySqlDAO();
 
-    public static MySqlDAOExternal getInstance() {
+    public static MySqlDAO getInstance() {
         return INSTANCE;
     }
 

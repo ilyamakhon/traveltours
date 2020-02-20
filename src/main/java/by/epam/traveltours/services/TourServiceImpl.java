@@ -35,26 +35,28 @@ public class TourServiceImpl implements TourService {
     }
 
     @Override
-    public TourCriteria getCriteriaByType(String criteriaType) {
+    public TourCriteria getCriteriaByTransportType(String criteriaType) {
 
-        switch (criteriaType) {
+        switch (criteriaType.toLowerCase()) {
             case "plane":
+            case "1":
                 return TourCriteria.Builder
                         .create()
                         .withTransportType(Collections.singletonList(Tour.TransportType.PLANE))
                         .build();
             case "train":
+            case "2":
                 return TourCriteria.Builder
                         .create()
                         .withTransportType(Collections.singletonList(Tour.TransportType.TRAIN))
                         .build();
             case "bus":
+            case "3":
                 return TourCriteria.Builder
                         .create()
                         .withTransportType(Collections.singletonList(Tour.TransportType.BUS))
                         .build();
         }
-
         throw new TourCriteriaNotFoundException("Wrong type for tour criteria : " + criteriaType + "\nPlease review application.properties file to find correct criteria types!");
     }
 }

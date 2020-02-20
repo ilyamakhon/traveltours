@@ -6,12 +6,12 @@ import java.io.*;
 import java.util.List;
 import java.util.Scanner;
 
-public class FileDAOExternal extends ExternalTourDAO {
+public class FileDAO extends ExternalTourDAO {
 
     private static final String FILE_PATH = "src/main/resources/textfiles/tours.txt";
-    private static final FileDAOExternal INSTANCE = new FileDAOExternal();
+    private static final FileDAO INSTANCE = new FileDAO();
 
-    public static FileDAOExternal getInstance() {
+    public static FileDAO getInstance() {
         return INSTANCE;
     }
 
