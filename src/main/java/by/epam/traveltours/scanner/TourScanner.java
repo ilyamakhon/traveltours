@@ -3,6 +3,7 @@ package by.epam.traveltours.scanner;
 import by.epam.traveltours.bean.Tour;
 import by.epam.traveltours.bean.TourCriteria;
 import by.epam.traveltours.dao.externaldao.ExternalTourDAO;
+import by.epam.traveltours.exception.TourCriteriaNotFoundException;
 import by.epam.traveltours.services.TourService;
 import by.epam.traveltours.storage.TourStorage;
 
@@ -31,7 +32,7 @@ public class TourScanner {
 
         switch (choice) {
             case "1":
-                tours.add(readTour());
+                tours.addAll(readTours());
                 baseMenu();
                 break;
             case "2":
@@ -61,28 +62,39 @@ public class TourScanner {
         }
     }
 
-    private Tour readTour() {
-        Tour tour = new Tour();
+    private List<Tour> readTours() {
+        List<Tour> tours = new ArrayList<>();
+        System.out.println("------------------------------------------");
+        System.out.print("Please enter amount of tours to be created: ");
+        int amountOfTours = in.nextInt();
+        Tour tour;
 
-        System.out.print("Enter Tour ID : ");
-        tour.setTourId(in.nextLong());
+        for (int i = 0; i < amountOfTours; i++) {
+            System.out.println("Creating of tour #" + (i + 1));
+            tour = new Tour();
 
-        System.out.print("Enter Amount Of Days : ");
-        tour.setAmountOfDays(in.nextInt());
+            System.out.print("Enter Tour ID : ");
+            tour.setTourId(in.nextLong());
 
-        System.out.print("Enter Price : ");
-        tour.setPrice(in.nextFloat());
+            System.out.print("Enter Amount Of Days : ");
+            tour.setAmountOfDays(in.nextInt());
 
-        System.out.print("[Available Tour Types: REST, THERAPEUTIC, EXCURSION, SHOPPING, CRUISE] Enter Tour Type : ");
-        tour.setTourType(Tour.TourType.valueOf(in.next().toUpperCase()));
+            System.out.print("Enter Price : ");
+            tour.setPrice(in.nextFloat());
 
-        System.out.print("[Available Tour Types: BREAKFAST, BREAKFAST_AND_DINNER, ALL_INCLUSIVE] Enter Type Of Food : ");
-        tour.setTypeOfFood(Tour.TypeOfFood.valueOf(in.next().toUpperCase()));
+            System.out.print("[Available Tour Types: REST, THERAPEUTIC, EXCURSION, SHOPPING, CRUISE] Enter Tour Type : ");
+            tour.setTourType(Tour.TourType.valueOf(in.next().toUpperCase()));
 
-        System.out.print("[Available Tour Types: BUS, TRAIN, PLANE] Enter Type Of Transport : ");
-        tour.setTransportType(Tour.TransportType.valueOf(in.next().toUpperCase()));
+            System.out.print("[Available Tour Types: BREAKFAST, BREAKFAST_AND_DINNER, ALL_INCLUSIVE] Enter Type Of Food : ");
+            tour.setTypeOfFood(Tour.TypeOfFood.valueOf(in.next().toUpperCase()));
 
-        return tour;
+            System.out.print("[Available Tour Types: BUS, TRAIN, PLANE] Enter Type Of Transport : ");
+            tour.setTransportType(Tour.TransportType.valueOf(in.next().toUpperCase()));
+
+            tours.add(tour);
+        }
+
+        return tours;
     }
 
     private void saveTours() {
@@ -145,7 +157,7 @@ public class TourScanner {
                 TOUR_SERVICE.findTours(tourCriteria, tours).forEach(System.out::println);
                 break;
             default:
-                throw new IllegalArgumentException("Wrong choice! Please view choices from menu once again!");
+                throw new TourCriteriaNotFoundException("Wrong type for tour criteria : " + choice + "\nPlease review application.properties file to find correct criteria types!");
         }
     }
 

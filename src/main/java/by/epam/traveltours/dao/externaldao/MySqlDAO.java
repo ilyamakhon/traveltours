@@ -8,7 +8,6 @@ import java.util.List;
 
 public class MySqlDAO extends ExternalTourDAO {
 
-    private static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
     private static final String DB_URL = PropertyLoader.loadProperty("db.url");
     private static final String DB_USERNAME = PropertyLoader.loadProperty("db.username");
     private static final String DB_PASSWORD = PropertyLoader.loadProperty("db.password");

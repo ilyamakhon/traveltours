@@ -1,6 +1,5 @@
 package by.epam.traveltours.bean;
 
-import java.io.Serializable;
 import java.util.Objects;
 
 public class Tour {

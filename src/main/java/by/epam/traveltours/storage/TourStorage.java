@@ -1,22 +1,12 @@
 package by.epam.traveltours.storage;
 
 import by.epam.traveltours.bean.Tour;
-import by.epam.traveltours.bean.TourCriteria;
 
-import java.util.Collections;
 import java.util.List;
 
-import static by.epam.traveltours.bean.Tour.TourType.CRUISE;
-import static by.epam.traveltours.bean.Tour.TourType.EXCURSION;
-import static by.epam.traveltours.bean.Tour.TourType.REST;
-import static by.epam.traveltours.bean.Tour.TourType.SHOPPING;
-import static by.epam.traveltours.bean.Tour.TourType.THERAPEUTIC;
-import static by.epam.traveltours.bean.Tour.TransportType.BUS;
-import static by.epam.traveltours.bean.Tour.TransportType.PLANE;
-import static by.epam.traveltours.bean.Tour.TransportType.TRAIN;
-import static by.epam.traveltours.bean.Tour.TypeOfFood.ALL_INCLUSIVE;
-import static by.epam.traveltours.bean.Tour.TypeOfFood.BREAKFAST;
-import static by.epam.traveltours.bean.Tour.TypeOfFood.BREAKFAST_AND_DINNER;
+import static by.epam.traveltours.bean.Tour.TourType.*;
+import static by.epam.traveltours.bean.Tour.TransportType.*;
+import static by.epam.traveltours.bean.Tour.TypeOfFood.*;
 import static java.util.Arrays.asList;
 
 public class TourStorage {

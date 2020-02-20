@@ -2,7 +2,10 @@ package by.epam.traveltours.dao.externaldao;
 
 import by.epam.traveltours.bean.Tour;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -29,7 +32,10 @@ public class FileDAO extends ExternalTourDAO {
 
     @Override
     public void saveTours(List<Tour> tours) {
-        try (FileWriter writer = new FileWriter(FILE_PATH)) {
+        try  {
+            File file = new File(FILE_PATH);
+            file.getParentFile().mkdirs();
+            FileWriter writer = new FileWriter(file);
             for (Tour tour : tours) {
                 writer.write(tour.toString() + "\n");
             }

@@ -3,7 +3,10 @@ package by.epam.traveltours.dao.externaldao;
 import by.epam.traveltours.bean.Tour;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Arrays;
 import java.util.List;
 
@@ -28,9 +31,11 @@ public class JsonDAO extends ExternalTourDAO {
 
     @Override
     public void saveTours(List<Tour> tours) {
+        File file = new File(FILE_PATH);
+        file.getParentFile().mkdirs();
         ObjectMapper mapper = new ObjectMapper();
         try {
-            mapper.writeValue(new File(FILE_PATH), tours);
+            mapper.writeValue(file, tours);
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -2,8 +2,6 @@ package by.epam.traveltours.dao.internaldao;
 
 import by.epam.traveltours.bean.Tour;
 import by.epam.traveltours.bean.TourCriteria;
-import by.epam.traveltours.exception.TourCriteriaNotFoundException;
-import by.epam.traveltours.storage.TourStorage;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -17,8 +15,6 @@ public class LocalTourDAOImpl implements LocalTourDAO {
     public static LocalTourDAOImpl getInstance() {
         return INSTANCE;
     }
-
-    private List<Tour> tours = TourStorage.getInstance().getAllTours();
 
     private LocalTourDAOImpl() {
     }
@@ -152,6 +148,6 @@ public class LocalTourDAOImpl implements LocalTourDAO {
                         .withTransportType(Collections.singletonList(Tour.TransportType.BUS))
                         .build();
         }
-        throw new TourCriteriaNotFoundException("Wrong type for tour criteria : " + criteriaType + "\nPlease review application.properties file to find correct criteria types!");
+        return null;
     }
 }
