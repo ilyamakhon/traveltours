@@ -2,9 +2,11 @@ package by.epam.traveltours.dao.internaldao;
 
 import by.epam.traveltours.bean.Tour;
 import by.epam.traveltours.bean.TourCriteria;
+import by.epam.traveltours.exception.TourCriteriaNotFoundException;
 import by.epam.traveltours.storage.TourStorage;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -22,7 +24,7 @@ public class LocalTourDAOImpl implements LocalTourDAO {
     }
 
     @Override
-    public List<Tour> findTours(TourCriteria criteria) {
+    public List<Tour> findTours(TourCriteria criteria, List<Tour> tours) {
         if (criteria == null) {
             return tours;
         }
@@ -125,5 +127,31 @@ public class LocalTourDAOImpl implements LocalTourDAO {
             }
             tourList.sort(comparator);
         }
+    }
+
+    @Override
+    public TourCriteria getCriteriaByTransportType(String criteriaType) {
+
+        switch (criteriaType.toLowerCase()) {
+            case "plane":
+            case "1":
+                return TourCriteria.Builder
+                        .create()
+                        .withTransportType(Collections.singletonList(Tour.TransportType.PLANE))
+                        .build();
+            case "train":
+            case "2":
+                return TourCriteria.Builder
+                        .create()
+                        .withTransportType(Collections.singletonList(Tour.TransportType.TRAIN))
+                        .build();
+            case "bus":
+            case "3":
+                return TourCriteria.Builder
+                        .create()
+                        .withTransportType(Collections.singletonList(Tour.TransportType.BUS))
+                        .build();
+        }
+        throw new TourCriteriaNotFoundException("Wrong type for tour criteria : " + criteriaType + "\nPlease review application.properties file to find correct criteria types!");
     }
 }

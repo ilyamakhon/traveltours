@@ -3,10 +3,8 @@ package by.epam.traveltours.services;
 import by.epam.traveltours.bean.Tour;
 import by.epam.traveltours.bean.TourCriteria;
 import by.epam.traveltours.dao.internaldao.LocalTourDAO;
-import by.epam.traveltours.exception.TourCriteriaNotFoundException;
 import by.epam.traveltours.validator.TourCriteriaValidator;
 
-import java.util.Collections;
 import java.util.List;
 
 public class TourServiceImpl implements TourService {
@@ -24,39 +22,18 @@ public class TourServiceImpl implements TourService {
     }
 
     @Override
-    public List<Tour> findTours(TourCriteria tourCriteria) {
+    public List<Tour> findTours(TourCriteria tourCriteria, List<Tour> tours) {
         if (tourCriteria == null) {
             tourCriteria = new TourCriteria();
         }
 
         criteriaValidator.validate(tourCriteria);
 
-        return localTourDAO.findTours(tourCriteria);
+        return localTourDAO.findTours(tourCriteria, tours);
     }
 
     @Override
     public TourCriteria getCriteriaByTransportType(String criteriaType) {
-
-        switch (criteriaType.toLowerCase()) {
-            case "plane":
-            case "1":
-                return TourCriteria.Builder
-                        .create()
-                        .withTransportType(Collections.singletonList(Tour.TransportType.PLANE))
-                        .build();
-            case "train":
-            case "2":
-                return TourCriteria.Builder
-                        .create()
-                        .withTransportType(Collections.singletonList(Tour.TransportType.TRAIN))
-                        .build();
-            case "bus":
-            case "3":
-                return TourCriteria.Builder
-                        .create()
-                        .withTransportType(Collections.singletonList(Tour.TransportType.BUS))
-                        .build();
-        }
-        throw new TourCriteriaNotFoundException("Wrong type for tour criteria : " + criteriaType + "\nPlease review application.properties file to find correct criteria types!");
+        return localTourDAO.getCriteriaByTransportType(criteriaType);
     }
 }

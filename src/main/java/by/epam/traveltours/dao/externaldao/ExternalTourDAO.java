@@ -9,13 +9,13 @@ import java.util.List;
 public abstract class ExternalTourDAO {
 
     public static ExternalTourDAO getDAO(String daoType) {
-        if (DAOEnum.MYSQL_DAO.getType().equals(daoType) || DAOEnum.MYSQL_DAO.getIndexType().equals(daoType)) {
+        if (DAOEnum.MYSQL_DAO.getIndexType().equals(daoType)) {
             return MySqlDAO.getInstance();
         }
-        if (DAOEnum.JSON_DAO.getType().equals(daoType) || DAOEnum.JSON_DAO.getIndexType().equals(daoType)) {
+        if (DAOEnum.JSON_DAO.getIndexType().equals(daoType)) {
             return JsonDAO.getInstance();
         }
-        if (DAOEnum.FILE_DAO.getType().equals(daoType) || DAOEnum.FILE_DAO.getIndexType().equals(daoType)) {
+        if (DAOEnum.FILE_DAO.getIndexType().equals(daoType)) {
             return FileDAO.getInstance();
         }
         throw new DaoNotFoundException("Data Access Object with type -> \""+ daoType +"\" not found!" + "\nPlease review application.properties file to find correct DAO types!");

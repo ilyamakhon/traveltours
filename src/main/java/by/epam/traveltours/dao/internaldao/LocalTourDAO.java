@@ -11,5 +11,7 @@ public interface LocalTourDAO {
         return LocalTourDAOImpl.getInstance();
     }
 
-    List<Tour> findTours(TourCriteria criteria);
+    List<Tour> findTours(TourCriteria criteria, List<Tour> tours);
+
+    TourCriteria getCriteriaByTransportType(String criteriaType);
 }

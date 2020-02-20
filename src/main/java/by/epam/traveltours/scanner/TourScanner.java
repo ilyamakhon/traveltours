@@ -3,8 +3,8 @@ package by.epam.traveltours.scanner;
 import by.epam.traveltours.bean.Tour;
 import by.epam.traveltours.bean.TourCriteria;
 import by.epam.traveltours.dao.externaldao.ExternalTourDAO;
-import by.epam.traveltours.propertyloader.PropertyLoader;
 import by.epam.traveltours.services.TourService;
+import by.epam.traveltours.storage.TourStorage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +13,6 @@ import java.util.Scanner;
 public class TourScanner {
 
     private static TourService TOUR_SERVICE = TourService.getInstance();
-    private static final String TRANSPORT_CRITERIA_TYPE = PropertyLoader.loadProperty("search.criteria.type");
     private Scanner in = new Scanner(System.in);
     private List<Tour> tours = new ArrayList<>();
     private ExternalTourDAO dao;
@@ -44,7 +43,7 @@ public class TourScanner {
                 baseMenu();
                 break;
             case "4":
-                tours = TOUR_SERVICE.findTours(new TourCriteria());
+                tours = TourStorage.getInstance().getAllTours();
                 baseMenu();
                 break;
             case "5":
@@ -143,7 +142,7 @@ public class TourScanner {
             case "2":
             case "3":
                 TourCriteria tourCriteria = TourService.getInstance().getCriteriaByTransportType(choice);
-                TOUR_SERVICE.findTours(tourCriteria).forEach(System.out::println);
+                TOUR_SERVICE.findTours(tourCriteria, tours).forEach(System.out::println);
                 break;
             default:
                 throw new IllegalArgumentException("Wrong choice! Please view choices from menu once again!");
@@ -160,11 +159,11 @@ public class TourScanner {
         switch (choice) {
             case "1":
                 TourCriteria tourCriteriaDays = TourCriteria.Builder.create().withSortField(TourCriteria.SortField.AMOUNT_OF_DAYS).build();
-                TOUR_SERVICE.findTours(tourCriteriaDays).forEach(System.out::println);
+                TOUR_SERVICE.findTours(tourCriteriaDays, tours).forEach(System.out::println);
                 break;
             case "2":
                 TourCriteria tourCriteriaPrice = TourCriteria.Builder.create().withSortField(TourCriteria.SortField.PRICE).build();
-                TOUR_SERVICE.findTours(tourCriteriaPrice).forEach(System.out::println);
+                TOUR_SERVICE.findTours(tourCriteriaPrice, tours).forEach(System.out::println);
                 break;
             default:
                 throw new IllegalArgumentException("Wrong choice! Please view choices from menu once again!");
